@@ -55,10 +55,10 @@ gpio_config_t button_config = {
 
 
     while (1) {
-      if ((gpio_get_level(BUTTON_PIN) == 0) && !state && (gpio_get_level(BUTTON_PIN) == 1)) {
+      if ((gpio_get_level(BUTTON_PIN) == 0) && !state && (gpio_get_level(BUTTON_PIN2) == 1)) {
         state = true;
       }
-      if (!(gpio_get_level(BUTTON_PIN) == 0) && state && (gpio_get_level(BUTTON_PIN) == 1)) {
+      if (!(gpio_get_level(BUTTON_PIN) == 0) && state && (gpio_get_level(BUTTON_PIN2) == 1)) {
         gpio_set_level(LED_PIN, light);
         light = !light;
         state = false;
