@@ -1,11 +1,27 @@
+/*
+Aaron Binion, 1/2026
+This code turns on an LED when it is pressed and released, 
+and turned off when the button is pressed and realeased again
+*/
+
 #include "freertos/FreeRTOS.h"
 #include "driver/gpio.h"
+
+
 
 
 #define LED_PIN GPIO_NUM_4   // Choose your LED pin
 #define BUTTON_PIN GPIO_NUM_5   // Choose your button pin
 
+<<<<<<< HEAD
+=======
+
+#define BUTTON_PIN2 GPIO_NUM_6
+
+
+>>>>>>> New_edits
 void app_main(void) {
+
 
 gpio_config_t led_config = {
         .pin_bit_mask = (1ULL << LED_PIN),
@@ -16,6 +32,7 @@ gpio_config_t led_config = {
     };
     gpio_config(&led_config);
 
+
 gpio_config_t button_config = {
         .pin_bit_mask = (1ULL << BUTTON_PIN),
         .mode = GPIO_MODE_INPUT,          
@@ -25,8 +42,23 @@ gpio_config_t button_config = {
     };
     gpio_config(&button_config);
 
+<<<<<<< HEAD
+=======
+
+    gpio_config_t button_config2 = {
+        .pin_bit_mask = (1ULL << BUTTON_PIN2),
+        .mode = GPIO_MODE_INPUT,          
+        .pull_up_en = GPIO_PULLUP_DISABLE,
+        .pull_down_en = GPIO_PULLDOWN_ENABLE,
+        .intr_type = GPIO_INTR_DISABLE  
+    };
+    gpio_config(&button_config2);
+
+
+>>>>>>> New_edits
     bool light = false;
     bool state = false;
+
 
     while (1) {
       if ((gpio_get_level(BUTTON_PIN) == 0) && !state) {
