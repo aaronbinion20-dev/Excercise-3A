@@ -13,13 +13,10 @@ and turned off when the button is pressed and realeased again
 #define LED_PIN GPIO_NUM_4   // Choose your LED pin
 #define BUTTON_PIN GPIO_NUM_5   // Choose your button pin
 
-<<<<<<< HEAD
-=======
 
 #define BUTTON_PIN2 GPIO_NUM_6
 
 
->>>>>>> New_edits
 void app_main(void) {
 
 
@@ -42,8 +39,6 @@ gpio_config_t button_config = {
     };
     gpio_config(&button_config);
 
-<<<<<<< HEAD
-=======
 
     gpio_config_t button_config2 = {
         .pin_bit_mask = (1ULL << BUTTON_PIN2),
@@ -55,16 +50,15 @@ gpio_config_t button_config = {
     gpio_config(&button_config2);
 
 
->>>>>>> New_edits
     bool light = false;
     bool state = false;
 
 
     while (1) {
-      if ((gpio_get_level(BUTTON_PIN) == 0) && !state) {
+      if ((gpio_get_level(BUTTON_PIN) == 0) && !state && (gpio_get_level(BUTTON_PIN) == 1)) {
         state = true;
       }
-      if (!(gpio_get_level(BUTTON_PIN) == 0) && state) {
+      if (!(gpio_get_level(BUTTON_PIN) == 0) && state && (gpio_get_level(BUTTON_PIN) == 1)) {
         gpio_set_level(LED_PIN, light);
         light = !light;
         state = false;
